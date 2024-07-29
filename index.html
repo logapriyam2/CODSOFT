@@ -1,104 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cake Baking Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Link to Font Awesome for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/remixicon.css">
+    <title>Web Design | Responsive Portfolio</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo"><a href="#">Loga Priya</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
     
-    <section id="home">
-        <h1>Welcome to Cake Baking Heaven</h1>
-        <p>Delicious cakes made with love and passion</p>
-    </section>
-    
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <div class="gallery-grid">
-            <img src="gallery3.jpg" alt="Cake 3">
-            <img src="gallery4.jpg" alt="Cake 4">
-            <img src="gallery6.jpg" alt="Cake 6">
-            <img src="gallery7.jpg" alt="Cake 7"> 
-            <img src="gallery9.jpg" alt="Cake 9">
-            <img src="gallery10.jpg" alt="Cake 10">
-            <img src="gallery11.jpg" alt="Cake 11">
-            <img src="gallery14.jpg" alt="Cake 14">
-            <img src="gallery15.jpg" alt="Cake 15">
-            <img src="gallery16.jpg" alt="Cake 16">
-            <img src="gallery17.jpg" alt="Cake 17">
-            <img src="gallery18.jpg" alt="Cake 18"> 
-            <img src="gallery1.jpg" alt="Cake 1">
-            <img src="gallery2.jpg" alt="Cake 2">
-            <img src="gallery5.jpg" alt="Cake 5">
-            <img src="gallery13.jpg" alt="Cake 13">
-            <img src="gallery12.jpg" alt="Cake 12">
-            <img src="gallery8.jpg" alt="Cake 8">
+    <section id="home" class="section active">
+      <div class="section__container">
+        <div class="content">
+          <p class="subtitle">HELLO</p>
+          <h1 class="title">
+            I'm <span>Loga Priya<br />a</span> Web Developer
+          </h1>
+          <p class="description">
+            Welcome to my web developer portfolio! I'm Loga Priya M, a skilled and creative web developer with a passion for creating beautiful, responsive, and user-friendly websites. I am constantly learning and adapting to new technologies to stay updated with the latest trends in web development.
+          </p>
+          <div class="action__btns">
+            <button class="hire__me" onclick="showSection('contact')">Hire Me</button>
+          </div>
         </div>
-    </section>
-    
-    <section id="about">
-        <h2>About Us</h2>
-        <p>
-            Welcome to Cake Baking Heaven, where every cake is a labor of love! Our journey began with a passion for baking and a dream to create unforgettable desserts. We blend the finest ingredients with innovative techniques to craft cakes that not only taste amazing but look stunning.
-            Our bakery is known for its unique flavor combinations and artistic designs. Whether you're celebrating a milestone, hosting a party, or simply indulging in a treat, our cakes are designed to bring joy to every occasion. We take pride in making each cake a masterpiece, tailored to your vision.
-            At Cake Baking Heaven, we're more than just a bakery. We're your partners in celebration, committed to making your special moments even sweeter. Thank you for letting us be a part of your life's most memorable events. We can't wait to bake something extraordinary just for you!
-        </p>
-    </section>
-    
-
-    
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Get in touch for orders, inquiries, or just to share your love for cakes!</p>
-        
-        <!-- Contact Details -->
-        <div class="contact-details">
-            <div class="quick-links">
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Recipes</a></li>
-                    <li><a href="#">Advertise with Us</a></li>
-                    <li><a href="#">Blog & Articles</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                    <li><a href="#">Customize Your Order</a></li>
-                    <li><a href="#">Hands-on Classes</a></li>
-                    <li><a href="#">Online Classes</a></li>
-                    <li><a href="#">Register as a Baker</a></li>
-                </ul>
-            </div>
-            <div class="contact-info">
-                <p><strong>Phone:</strong> +1234567893</p>
-                <p><strong>Email:</strong> <a href="mailto:info@bakingheaven.co.in">info@bakingheaven.co.in</a></p>
-                <p><strong>Address:</strong> 505, Raj Street, India.</p>
-            </div>
-            <div class="social-media">
-                <a href="https://www.instagram.com/yourprofile" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/yourprofile" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            </div>
+        <div class="image">
+          <img src="about1.jpg" alt="About Image" />
         </div>
+      </div>
     </section>
     
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
-        <span class="close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-    </div>
-
+    <section id="about" class="section">
+      <div class="section__container">
+        <div class="content">
+          <h1 class="title">About Me</h1>
+          <p class="description">
+            I am Loga Priya M, a passionate web developer with expertise in creating modern and responsive web applications. With a strong foundation in HTML, CSS, JavaScript, and various web development frameworks, I strive to deliver high-quality projects that meet client requirements and exceed expectations. My journey in web development began with a curiosity for technology and has evolved into a career focused on continuous learning and innovation.
+          </p>
+        </div>
+        <div class="about-image-container">
+          <img src="pic1.jpg" alt="Loga Priya" class="about-image" />
+        </div>
+      </div>
+    </section>
+    
+    
+    
+    <section id="skills" class="section">
+      <div class="section__container">
+        <div class="content">
+          <h1 class="title">Skills</h1>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon">🌐</div>
+              <div class="skill-title">HTML</div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%;"></div>
+              </div>
+              <div class="skill-description">Proficient in HTML5 and semantic markup.</div>
+            </div>
+            
+            <div class="skill-item">
+              <div class="skill-icon">🎨</div>
+              <div class="skill-title">CSS</div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%;"></div>
+              </div>
+              <div class="skill-description">Experienced with modern CSS and pre-processors.</div>
+            </div>
+            
+            <div class="skill-item">
+              <div class="skill-icon"> 📜 </div>
+              <div class="skill-title">JavaScript</div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 75%;"></div>
+              </div>
+              <div class="skill-description">Skilled in JavaScript and various frameworks.</div>
+            </div>
+            
+              <p class="skill-description">Experienced in JavaScript, including ES6+ features and modern frameworks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="projects" class="section">
+      <div class="section__container">
+        <div class="content">
+          <h1 class="title">Projects</h1>
+          <div class="project">
+            <h3>Responsive Cake Baking Landing Page</h3>
+            <p>This project is a responsive landing page designed for a cake baking business. </p>
+             <p> It features a modern and visually appealing design with sections that showcase various cake offerings, 
+              customer testimonials, and a contact form.</p>
+              <p>The landing page is optimized for different devices, ensuring a seamless user experience on desktops, tablets, and smartphones.</p>
+            <video controls>
+              <source src="project.mov" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="resume" class="section">
+      <div class="section__container">
+        <div class="content">
+          <h1 class="title">My Resume</h1>
+          <a href="resume.jpeg" class="view-resume" target="_blank">View Resume</a>
+        </div>
+      </div>
+    </section>
+    
+    <section id="contact" class="section">
+      <div class="section__container">
+        <div class="content">
+          <h1 class="title">Contact Me</h1>
+          <p class="description">
+            Feel free to reach out to me through any of the following methods:
+          </p>
+          <ul class="contact-info">
+            <li>Email: <a href="mailto:logapriyam2@gmail.com">logapriyam2@gmail.com</a></li>
+            <li>Phone: <a href="tel:+1234567890">+123-456-7890</a></li>
+            <li>LinkedIn: <a href="https://linkedin.com/in/loga-priya-m-6ab194256" target="_blank">linkedin.com/in/logapriya</a></li>
+            <li>GitHub: <a href="https://github.com/logapriyam2" target="_blank">github.com/logapriya</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <footer>
+      <p>&copy; 2024 Loga Priya. All rights reserved.</p>
+    </footer>
+    
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

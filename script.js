@@ -1,43 +1,57 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const galleryImages = document.querySelectorAll('.gallery-grid img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const close = document.querySelector('.close');
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const sections = document.querySelectorAll('section');
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Intersection Observer to reveal sections
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
 
-    galleryImages.forEach(image => {
-        image.addEventListener('click', () => {
-            lightbox.style.display = 'block';
-            lightboxImg.src = image.src;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
         });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
     });
 
-    close.addEventListener('click', () => {
-        lightbox.style.display = 'none';
-    });
+    // Function to activate the navigation link
+    function activateNavLink() {
+        let index = sections.length;
 
-    lightbox.addEventListener('click', (e) => {
-        if (e.target !== lightboxImg) {
-            lightbox.style.display = 'none';
+        while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
+
+        navLinks.forEach((link) => link.classList.remove('active'));
+        if (navLinks[index]) {
+            navLinks[index].classList.add('active');
         }
-    });
+    }
 
-    window.addEventListener('scroll', () => {
-        let currentSection = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                currentSection = section.getAttribute('id');
-            }
-        });
+    // Set initial state and add scroll event listener
+    activateNavLink();
+    window.addEventListener('scroll', activateNavLink);
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(currentSection)) {
-                link.classList.add('active');
-            }
+    // Smooth scroll to section on navigation link click
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const targetSectionId = this.getAttribute('href').substring(1);
+            scrollToSection(targetSectionId);
         });
     });
+
+    function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 });
