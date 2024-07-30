@@ -1,57 +1,59 @@
+// script.js
 document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    // Intersection Observer to reveal sections
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
+    const display = document.getElementById('display');
+    const buttons = document.querySelectorAll('.btn');
+    let currentInput = '';
+    let previousInput = '';
+    let operator = null;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const value = this.getAttribute('data-value');
+
+            if (value === 'C') {
+                // Clear the current input only and update the display to 0
+                currentInput = '';
+                display.innerText = '0';
+            } else if (value === 'DEL') {
+                // Delete the last character in the current input
+                currentInput = currentInput.slice(0, -1);
+                display.innerText = currentInput || '0';
+            } else if (value === '=') {
+                // Perform the calculation if there is an operator and both inputs
+                if (operator && currentInput && previousInput) {
+                    currentInput = calculate(previousInput, currentInput, operator);
+                    display.innerText = currentInput;
+                    previousInput = '';
+                    operator = null;
+                }
+            } else if (['+', '-', '*', '/'].includes(value)) {
+                // Set the operator if there's an existing input
+                if (currentInput) {
+                    previousInput = currentInput;
+                    currentInput = '';
+                    operator = value;
+                } else if (previousInput) {
+                    // Allow operator change if there is a previous input
+                    operator = value;
+                }
             } else {
-                entry.target.classList.remove('visible');
+                // Append the value to the current input and update the display
+                currentInput += value;
+                display.innerText = currentInput;
             }
         });
-    }, observerOptions);
-
-    sections.forEach(section => {
-        observer.observe(section);
     });
 
-    // Function to activate the navigation link
-    function activateNavLink() {
-        let index = sections.length;
+    function calculate(a, b, operator) {
+        a = parseFloat(a);
+        b = parseFloat(b);
 
-        while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
-
-        navLinks.forEach((link) => link.classList.remove('active'));
-        if (navLinks[index]) {
-            navLinks[index].classList.add('active');
-        }
-    }
-
-    // Set initial state and add scroll event listener
-    activateNavLink();
-    window.addEventListener('scroll', activateNavLink);
-
-    // Smooth scroll to section on navigation link click
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const targetSectionId = this.getAttribute('href').substring(1);
-            scrollToSection(targetSectionId);
-        });
-    });
-
-    function scrollToSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
+        switch (operator) {
+            case '+': return (a + b).toString();
+            case '-': return (a - b).toString();
+            case '*': return (a * b).toString();
+            case '/': return (a / b).toString();
+            default: return b.toString();
         }
     }
 });
